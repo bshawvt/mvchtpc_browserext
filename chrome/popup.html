@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<style>
+			body { 
+				width: 300px; 
+				margin: 5px;
+				padding: 5px;
+			}
+			#content-body {
+				background-color: rgb(100, 100, 150);
+				padding: 5px;
+			}
+			.title {
+
+			}
+			.title-text {
+				color: white;
+			}
+			.move-left {
+				float: left;
+			}
+			.move-right {
+				float: right;
+				overflow: auto;
+			}
+			.clear {
+			    clear: both;
+			    display: table;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content-body">
+			<p class="title">
+				<img src="icon_32x32.png" style="float: left;"/>
+				<h1 class="title-text">MvcHTPC Linker</h1>
+			</p>
+			<div>
+				<button id="activate">Enable</button>
+				<input type="text" placeholder="Your Folder Key"></input>
+				<span class='clear'></span>
+				<br/>
+				<button id="save-settings" class='move-right'>Save</button>
+				<span class='clear'></span>
+			</div>
+		</div>
+
+
+		<script src="popup.js" type="text/javascript"></script>
+	</body>
+
+</html>
