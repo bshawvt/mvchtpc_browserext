@@ -4,15 +4,25 @@ var isReady = false;
 
 chrome.runtime.onMessage.addListener(function(req, sender, response) {
 
-	console.log("contextMenu: ", req, sender, response);
+	console.log(req, sender, response);
+	if (req.folderKey !== undefined) {
+		if (req.folderKey !== null) {
+			folderKey = req.folderKey;
+			console.log("folderKey is now: ", folderKey);
+		}
+	}
 
 })
 
 
 function saveContent(s) {
+	if (folderKey == "") {
+		return;
+	}
 	var url = s.pageUrl;
-	var folder = "MyHardcodedFolderName";
+	var folder = folderKey;
 	var r = new XMLHttpRequest();
+	console.log("request: url: %s\nfolder: %s", url, folder);
 	r.onreadystatechange = function(x) {
 		
 		if (r.readyState === XMLHttpRequest.DONE) {

@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 
-	"name": "",
-	"description": "",
+	"name": "HTPC Linker",
+	"description": "Integrates HTPC features into Chrome.",
 	"version": "0.0.0",
 
 	"browser_action": {

@@ -7,17 +7,18 @@ function init() {
 	});
 }
 
-function onPopupActive() {
-	chrome.runtime.sendMessage({test: "hello world"}, function(response) {
+function updateFolderKey() {
+	var v = document.getElementById("folderLocation").value;
+	chrome.runtime.sendMessage({folderKey: v}, function(response) {
 		console.log("popup response: ", response); 
 	});
 }
 
-function doThing() {
-	var t = document.getElementById("activate");
+function init() {
+	var t = document.getElementById("save-settings");
 	if (t) {
-		t.addEventListener('click', function(e) {console.log("clicked da button"); onPopupActive();})
+		t.addEventListener('click', function(e) {console.log("clicked da button"); updateFolderKey();})
 	}
 }
 
-doThing();
+init();
