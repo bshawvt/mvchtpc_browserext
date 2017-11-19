@@ -1,6 +1,6 @@
-var folderKey = "";
+var folderKey = ""; // active folder, where bookmarks are sent to on the website
 var isReady = false;
-
+var activeElement = null; // element to send text to
 
 chrome.runtime.onMessage.addListener(function(req, sender, response) {
 
@@ -12,8 +12,19 @@ chrome.runtime.onMessage.addListener(function(req, sender, response) {
 		}
 	}
 
-})
+});
 
+function activateVoiceToText() {
+	/*
+		
+	*/
+	var activeElement = document.activeElement;
+	console.log(activeElement);
+}
+
+function fillValueText(text, element) {
+	element.value = text;
+}
 
 function saveContent(s) {
 	if (folderKey == "") {
@@ -34,8 +45,12 @@ function saveContent(s) {
 	r.open("GET", "http://localhost:8181/Api/SaveUrlToFolder/?folder=" + folder + "&url=" + url);
 	r.send();
 
-}
+};
 
-var cm = chrome.contextMenus.create({title: "Save to HTPC", onclick: saveContent}, function(e){
+var sc = chrome.contextMenus.create({title: "Save to HTPC", onclick: saveContent}, function(e){
 	console.log("ready");
+});
+
+var vt = chrome.contextMenus.create({title: "Voice-to-Text here", onclick: activateVoiceToText}, function(e) {
+	console.log("ready2");
 });
